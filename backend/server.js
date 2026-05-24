@@ -17,14 +17,14 @@ const server = http.createServer(app);
 // Socket.io setup
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: process.env.CLIENT_URL,
     methods: ['GET', 'POST']
   }
 });
 
 // Middleware
 app.use(cors({
-  origin: "*",
+  origin:  process.env.CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
