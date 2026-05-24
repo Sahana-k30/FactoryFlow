@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-industrial-dark: #050505; /* Deep Black */
+  --color-industrial-card: rgba(15, 23, 42, 0.6); /* Slate 900 Glass */
+  --color-primary: #0ea5e9; /* Cyan 500 */
+  --color-accent: #a855f7; /* Purple 500 */
+  --color-neon-green: #10b981; 
+}
+
+body {
+  background-color: var(--color-industrial-dark);
+  background-image: radial-gradient(circle at top right, rgba(14, 165, 233, 0.05), transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.05), transparent 40%);
+  background-attachment: fixed;
+  color: #f8fafc; /* Slate 50 */
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium Futuristic SaaS Card */
+.glass-card {
+  background-color: var(--color-industrial-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Universal Palette Override: Dark Mode */
+.bg-slate-900 { background-color: #050505 !important; }
+.bg-slate-800 { background-color: rgba(15, 23, 42, 0.6) !important; }
+.bg-slate-800\/50 { background-color: rgba(15, 23, 42, 0.3) !important; }
+.bg-slate-800\/30 { background-color: rgba(15, 23, 42, 0.2) !important; }
+.bg-slate-700 { background-color: rgba(30, 41, 59, 0.8) !important; }
+
+/* Border Overrides */
+.border-slate-700 { border-color: rgba(255, 255, 255, 0.1) !important; }
+.border-slate-700\/50 { border-color: rgba(255, 255, 255, 0.05) !important; }
+
+/* Text Overrides - Dark Mode */
+.text-white { color: #ffffff !important; }
+.text-slate-500 { color: #64748b !important; }
+.text-slate-400 { color: #94a3b8 !important; }
+.text-slate-300 { color: #cbd5e1 !important; }
+.text-slate-200 { color: #e2e8f0 !important; }
+
+/* Elegant Form Inputs */
+input, select {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.3) !important;
+}
+
+/* Map popup override */
+.leaflet-popup-content-wrapper {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  backdrop-filter: blur(10px);
+  color: #f8fafc !important;
+  border: 1px solid rgba(14, 165, 233, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+.leaflet-popup-tip {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+}
