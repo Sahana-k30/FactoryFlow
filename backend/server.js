@@ -17,15 +17,18 @@ const server = http.createServer(app);
 // Socket.io setup
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL,
-    methods: ['GET', 'POST']
+    origin: 'https://factory-flow-two.vercel.app',
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
-
 // Middleware
+
 app.use(cors({
-  origin:  process.env.CLIENT_URL,
-  credentials: true
+  origin: 'https://factory-flow-two.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
