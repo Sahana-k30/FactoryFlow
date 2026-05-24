@@ -19,7 +19,7 @@ const Shipments = () => {
   useEffect(() => {
     const fetchShipments = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/shipments', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/shipments`, {
           headers: { Authorization: `Bearer ${userInfo.token}` }
         });
         const data = await res.json();
@@ -33,7 +33,7 @@ const Shipments = () => {
       fetchShipments();
     }
     
-    const socket = io('http://localhost:5000');
+    const socket = io(import.meta.env.VITE_SOCKET_URL);
     socket.on('shipment-updated', (newShipment) => {
       setShipments((prev) => {
         const exists = prev.find(s => s._id === newShipment._id);
@@ -69,11 +69,11 @@ const Shipments = () => {
   const assignFleet = async (shipment) => {
     try {
       const headers = { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' };
-      const recRes = await fetch(`http://localhost:5000/api/shipments/${shipment._id}/recommend-vehicle`, { headers });
+      const recRes = await fetch(`${import.meta.env.VITE_API_URL}/shipments/${shipment._id}/recommend-vehicle`, { headers });
       const recData = await recRes.json();
       
       if (recData.recommendation) {
-        await fetch(`http://localhost:5000/api/shipments/${shipment._id}/assign`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/shipments/${shipment._id}/assign`, {
           method: 'PUT',
           headers,
           body: JSON.stringify({ vehicleId: recData.recommendation._id })
@@ -88,7 +88,7 @@ const Shipments = () => {
 
   const dispatchNow = async (shipment) => {
     try {
-      await fetch(`http://localhost:5000/api/shipments/${shipment._id}/status`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/shipments/${shipment._id}/status`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${userInfo.token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: 'In Transit' })

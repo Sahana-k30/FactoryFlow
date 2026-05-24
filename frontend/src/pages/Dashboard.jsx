@@ -40,8 +40,8 @@ const Dashboard = () => {
       try {
         const headers = { Authorization: `Bearer ${userInfo.token}` };
         const [shipmentsRes, vehiclesRes] = await Promise.all([
-          fetch('http://localhost:5000/api/shipments', { headers }),
-          fetch('http://localhost:5000/api/vehicles', { headers })
+          fetch(`${import.meta.env.VITE_API_URL}/shipments`, { headers }),
+          fetch(`${import.meta.env.VITE_API_URL}/vehicles`, { headers })
         ]);
         
         const shipments = await shipmentsRes.json();

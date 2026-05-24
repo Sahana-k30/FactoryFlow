@@ -14,7 +14,7 @@ const Vehicles = () => {
 
   const fetchVehicles = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/vehicles', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/vehicles`, {
         headers: { Authorization: `Bearer ${userInfo.token}` }
       });
       const data = await res.json();
@@ -31,7 +31,7 @@ const Vehicles = () => {
   const handleCreateSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('http://localhost:5000/api/vehicles', {
+      await fetch(`${import.meta.env.VITE_API_URL}/vehicles`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

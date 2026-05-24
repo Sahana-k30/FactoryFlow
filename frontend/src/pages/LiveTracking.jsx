@@ -136,7 +136,7 @@ const LiveTracking = () => {
     const speedKmh = 65; 
     const speedKms = speedKmh / 3600;
 
-    const socket = io('http://localhost:5000');
+    const socket = io(import.meta.env.VITE_SOCKET_URL);
 
     const interval = setInterval(() => {
       const now = Date.now();
@@ -150,7 +150,7 @@ const LiveTracking = () => {
         if (!hasArrived.current) {
           hasArrived.current = true;
           // Trigger delivery API update
-          fetch(`http://localhost:5000/api/shipments/${shipmentToTrack._id}/status`, {
+          fetch(`${import.meta.env.VITE_API_URL}/shipments/${shipmentToTrack._id}/status`, {
              method: 'PUT',
              headers: { 
                'Content-Type': 'application/json',
